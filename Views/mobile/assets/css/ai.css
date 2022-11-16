@@ -56,13 +56,9 @@
 .ai__recom-ttl span{display: block; font-size:1.1rem; margin:1.5rem 0 0;}
 .ai__recom-prd{background:#fff; padding:4rem 0 5rem;}
 
-.recom__product{}
 .recom__product-ttl{padding:0 0 1.75rem; color:#FC6051; font-size:1.4rem; text-align:center;}
-.recom__prd__group{}
 .recom__prd__item{background:#FC6051; padding:2rem 2rem; box-sizing:border-box; border-radius:.5rem;}
 .recom__prd__item.swiper-slide{width:300px;}
-.recom__prd__item a{}
-.recom__prd__item-photo{}
 .recom__prd__item-photo img{width:100%;}
 .recom__prd__item-info{margin:0 0 1rem;}
 .recom__prd__item-info dt{text-align:center; font-size:1rem; color:#fff; line-height:1.3; font-weight:500;}
@@ -77,15 +73,14 @@
 
 /** page__ai-chat *******************************************************/
 #page__ai-chat{position:relative; background:#F5F1EC; border-radius:2rem 2rem 0 0; overflow-y:scroll; overflow-x:hidden;}
-.ai__chat-inner{position:absolute; left:0; top:0; width: 100%; min-height: 100%; padding:2rem 1.25rem; box-sizing:border-box;}
+/* .ai__chat-inner{position:absolute; left:0; top:0; width: 100%; min-height: 100%; padding:2rem 1.25rem; box-sizing:border-box;} */
+.ai__chat-inner{width: 100%; min-height: 100%; padding:2rem 1.25rem; box-sizing:border-box;}
 
-.chat__group{}
+
 .chat__item{margin:.75rem 20% .75rem .75rem;}
 
-.speaker-injung{}
 .speaker-injung::before{content:''; display:block; width: 3rem; height: 3rem; border-radius:3rem; background:url(../img/ai/ai-profile.png) 50% 50% no-repeat; background-size:100% auto;}
 
-.speaker-customer{}
 .speaker-customer + .speaker-injung{margin-top:1.85rem;}
 .speaker-customer .chat__item{margin-right:0; margin-left:20%; text-align:right;}
 

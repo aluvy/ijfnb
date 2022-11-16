@@ -4,7 +4,7 @@
 .mySlide .swiper-pagination-bullet.swiper-pagination-bullet-active{width:2rem; background:#FC6251; opacity: 1;}
 
 .main__product{padding:1rem 0 2rem;}
-.main__product-ttl{padding:1rem;}
+.main__product-ttl{padding:1rem; font-size:1.125rem;}
 .main__prd__group{padding:0 1rem;}
 .main__prd__item-photo img{width:100%;}
 .main__prd__item-info{margin:1rem 0 0;}
