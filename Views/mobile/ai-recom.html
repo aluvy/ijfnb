@@ -30,53 +30,7 @@
 				<div class="recom__product">
 					<h3 class="recom__product-ttl">맞춤식탁이 추천해요</h3>
 					<div class="swiper myProducts">
-						<ul class="recom__prd__group swiper-wrapper">
-							<li class="recom__prd__item swiper-slide">
-								<a href="#">
-									<dl class="recom__prd__item-info">
-										<dt>그리운 집밥 맞춤 Plan</dt>
-										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
-									</dl>
-									<div class="recom__prd__item-photo"><img src="./assets/img/main/product1.jpg" alt="prd image" /></div>
-								</a>
-							</li>
-							<li class="recom__prd__item swiper-slide">
-								<a href="#">
-									<dl class="recom__prd__item-info">
-										<dt>체중 감량 케어 맞춤 Plan</dt>
-										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
-									</dl>
-									<div class="recom__prd__item-photo"><img src="./assets/img/main/product2.jpg" alt="prd image" /></div>
-								</a>
-							</li>
-							<li class="recom__prd__item swiper-slide">
-								<a href="#">
-									<dl class="recom__prd__item-info">
-										<dt>연인 케어 맞춤 Plan</dt>
-										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
-									</dl>
-									<div class="recom__prd__item-photo"><img src="./assets/img/main/product3.jpg" alt="prd image" /></div>
-								</a>
-							</li>
-							<li class="recom__prd__item swiper-slide">
-								<a href="#">
-									<dl class="recom__prd__item-info">
-										<dt>체중 감량 케어 맞춤 Plan</dt>
-										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
-									</dl>
-									<div class="recom__prd__item-photo"><img src="./assets/img/main/product4.jpg" alt="prd image" /></div>
-								</a>
-							</li>
-							<li class="recom__prd__item swiper-slide">
-								<a href="#">
-									<dl class="recom__prd__item-info">
-										<dt>장 건강 케어 맞춤 Plan</dt>
-										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
-									</dl>
-									<div class="recom__prd__item-photo"><img src="./assets/img/main/product5.jpg" alt="prd image" /></div>
-								</a>
-							</li>
-						</ul>
+						<ul class="recom__prd__group swiper-wrapper"></ul>
 					</div>
 					<div class="recom__product-btn">
 						<a href="https://m.ijfnb.com/">구매하러 가기</a>
@@ -88,6 +42,52 @@
 	</div><!-- #wrap -->
 	<script>
 		$(()=>{
+
+			let useData = [
+				{
+					title : "그리운 집밥 맞춤 Plan",
+					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+					image : "./assets/img/main/product1.jpg",
+				},
+				{
+					title : "체중 감량 케어 맞춤 Plan",
+					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+					image : "./assets/img/main/product2.jpg",
+				},
+				{
+					title : "연인 케어 맞춤 Plan",
+					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+					image : "./assets/img/main/product3.jpg",
+				},
+				{
+					title : "체중 감량 케어 맞춤 Plan",
+					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+					image : "./assets/img/main/product4.jpg",
+				},
+				{
+					title : "장 건강 케어 맞춤 Plan",
+					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+					image : "./assets/img/main/product5.jpg",
+				},
+			];
+
+			let resultHTML = ``;
+			useData.forEach((item, index)=>{
+				resultHTML += `
+					<li class="recom__prd__item swiper-slide">
+						<a href="#">
+							<dl class="recom__prd__item-info">
+								<dt>${item.title}</dt>
+								<dd>${item.summary}</dd>
+							</dl>
+							<div class="recom__prd__item-photo"><img src="${item.image}" alt="prd image" /></div>
+						</a>
+					</li>
+				`;
+			});
+			$(document).find(".recom__prd__group").html(resultHTML);
+
+
 			var swiper3 = new Swiper(".myProducts", {
 				effect: "coverflow",
 				grabCursor: true,
