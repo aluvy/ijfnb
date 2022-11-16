@@ -33,7 +33,7 @@
 						<ul class="recom__prd__group swiper-wrapper"></ul>
 					</div>
 					<div class="recom__product-btn">
-						<a href="https://m.ijfnb.com/">구매하러 가기</a>
+						<a href="https://m.ijfnb.com/" class="btn__buy">구매하러 가기</a>
 					</div>
 				</div>
 			</div><!-- .ai__recom-prd -->
@@ -48,26 +48,31 @@
 					title : "그리운 집밥 맞춤 Plan",
 					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
 					image : "./assets/img/main/product1.jpg",
+					url : "https://ijfnb.com/product/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8-%EC%88%9C%EC%82%B4%EC%9D%84-%EC%A3%BD%EC%97%BC%EC%9C%BC%EB%A1%9C-%EA%B0%84%EC%9D%84-%EB%82%B8-%EC%9D%B4%EB%8F%99%EC%82%BC-%EC%95%88%EB%8F%99%EA%B0%84%EA%B3%A0%EB%93%B1%EC%96%B4-150g-x-5%ED%8C%A9/17955/category/716/display/1/",
 				},
 				{
 					title : "체중 감량 케어 맞춤 Plan",
 					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
 					image : "./assets/img/main/product2.jpg",
+					url : "https://ijfnb.com/product/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8-%EC%88%9C%EC%82%B4%EC%9D%84-%EC%A3%BD%EC%97%BC%EC%9C%BC%EB%A1%9C-%EA%B0%84%EC%9D%84-%EB%82%B8-%EC%9D%B4%EB%8F%99%EC%82%BC-%EC%95%88%EB%8F%99%EA%B0%84%EA%B3%A0%EB%93%B1%EC%96%B4-150g-x-5%ED%8C%A9/17955/category/716/display/2/",
 				},
 				{
 					title : "연인 케어 맞춤 Plan",
 					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
 					image : "./assets/img/main/product3.jpg",
+					url : "https://ijfnb.com/product/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8-%EC%88%9C%EC%82%B4%EC%9D%84-%EC%A3%BD%EC%97%BC%EC%9C%BC%EB%A1%9C-%EA%B0%84%EC%9D%84-%EB%82%B8-%EC%9D%B4%EB%8F%99%EC%82%BC-%EC%95%88%EB%8F%99%EA%B0%84%EA%B3%A0%EB%93%B1%EC%96%B4-150g-x-5%ED%8C%A9/17955/category/716/display/3/",
 				},
 				{
 					title : "체중 감량 케어 맞춤 Plan",
 					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
 					image : "./assets/img/main/product4.jpg",
+					url : "https://ijfnb.com/product/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8-%EC%88%9C%EC%82%B4%EC%9D%84-%EC%A3%BD%EC%97%BC%EC%9C%BC%EB%A1%9C-%EA%B0%84%EC%9D%84-%EB%82%B8-%EC%9D%B4%EB%8F%99%EC%82%BC-%EC%95%88%EB%8F%99%EA%B0%84%EA%B3%A0%EB%93%B1%EC%96%B4-150g-x-5%ED%8C%A9/17955/category/716/display/4/",
 				},
 				{
 					title : "장 건강 케어 맞춤 Plan",
 					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
 					image : "./assets/img/main/product5.jpg",
+					url : "#",
 				},
 			];
 
@@ -75,7 +80,7 @@
 			useData.forEach((item, index)=>{
 				resultHTML += `
 					<li class="recom__prd__item swiper-slide">
-						<a href="#">
+						<a href="${item.url}">
 							<dl class="recom__prd__item-info">
 								<dt>${item.title}</dt>
 								<dd>${item.summary}</dd>
@@ -103,6 +108,14 @@
 				pagination: {
 					el: ".swiper-pagination",
 				},
+				on: {
+					slideChange: function () {
+						console.log(this.realIndex+'번째 slide입니다.');
+						// let link = $(document).find(".swiper-slide-active a").prop("href");
+						let link = useData[this.realIndex].url;
+						$(document).find(".btn__buy").prop("href", link);
+					}
+				}
 			});
 			swiper3.slideTo(1,0);
 		});
