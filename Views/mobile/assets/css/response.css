@@ -17,3 +17,16 @@
 @media screen and (max-width: 280px) {
 	html{font-size:10px;}
 }
+
+
+
+
+
+
+@media screen and (max-height: 800px) {
+	#page__ai-main{padding-top:6rem;}
+}
+
+@media screen and (max-height: 620px) {
+	#page__ai-main{padding-top:4rem;}
+}

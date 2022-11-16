@@ -279,14 +279,10 @@
 			const chating = `<div class="chat__ing"><div class="chat__ing-group"><span></span><span></span><span></span></div></div>`;
 			$(document).find(".ai__chat-inner").append(chating);
 
-			$("#page__ai-chat").scrollTop(50000000000000)
-
 			setTimeout(() => {
 				$(document).find(".chat__ing").remove();
 				$(document).find(".ai__chat-inner").append(data.text);
 				$(document).find(".ai__chat-inner").append(data.answer);
-
-				$("#page__ai-chat").scrollTop(50000000000000)
 			}, time);
 		}
 		
