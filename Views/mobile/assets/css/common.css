@@ -1,5 +1,9 @@
-html, body{width:100%; min-height: 100%;}
-#wrap{position:relative; width:100%; min-height:100%; overflow:hidden; padding:4.375rem 0 4.156rem;}
+:root {
+    --vh: 100%;
+}
+
+html, body{width:100%; min-height: var(--vh);}
+#wrap{position:relative; width:100%; min-height:var(--vh); overflow:hidden; padding:4.375rem 0 4.156rem; box-sizing:border-box;}
 
 /** header *********************************************************************/
 #header{position:fixed; left:0; top:0; width:100%; display:flex; align-items:center; justify-content: space-between; height:4.375rem; background:#FC6251; padding:0 1rem; box-sizing:border-box; z-index:99;}
@@ -64,14 +68,27 @@ html, body{width:100%; min-height: 100%;}
 
 /** common ********************************************************************/
 /* height */
-.height-full{min-height:100vh;}
+/* .somediv{height:calc(var(--vh, 1vh) * 100);} */
+/* 100이면 100vh */
+/* min-height:var(--vh); */
+
+.height-full{min-height:var(--vh);}
+.height-full-header{min-height:calc(var(--vh) - 4.375rem)}
+.height-full-header-nav{min-height:calc(var(--vh) - 7.375rem)}
+.height-full-header-nav-gnb{min-height:calc(var(--vh) - 11.513rem)}
+.height-fix-full{height:var(--vh);}
+.height-fix-full-header{height:calc(var(--vh) - 4.375rem)}
+.height-fix-full-header-nav{height:calc(var(--vh) - 7.375rem)}
+.height-fix-full-header-nav-gnb{height:calc(var(--vh) - 11.513rem)}
+
+/* .height-full{min-height:100vh;}
 .height-full-header{min-height:calc(100vh - 4.375rem)}
 .height-full-header-nav{min-height:calc(100vh - 7.375rem)}
 .height-full-header-nav-gnb{min-height:calc(100vh - 11.513rem)}
 .height-fix-full{height:100vh;}
 .height-fix-full-header{height:calc(100vh - 4.375rem)}
-.height-fix-full-header-nav{height:calc(100vh - 7.375rem)}
-.height-fix-full-header-nav-gnb{height:calc(100vh - 11.513rem)}
+.height-fix-full-header-nav{height:calc(100vh - 7.375rem);}
+.height-fix-full-header-nav-gnb{height: 100vh; height: -webkit-fill-available;} */
 
 /* price */
 .price-flat{font-size:0.9375rem; font-weight:700; color:#111;}

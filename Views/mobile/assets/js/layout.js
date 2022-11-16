@@ -1,4 +1,25 @@
+
+// let vh = window.innerHeight * 0.01;
+// document.documentElement.style.setProperty('--vh', vh+"px");
+// // resize
+// window.addEventListener("resize", ()=>{
+// 	let vh = window.innerHeight * 0.01;
+// 	document.documentElement.style.setProperty('--vh', vh+"px");
+// })
+
+
+
+
 $(()=>{
+
+	// vh
+	let vh = 0;
+	const setVh = () => {
+		// document.documentElement.style.setProperty('--vh', `${window.outerHeight}px`);
+		document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+	};
+	window.addEventListener('resize', setVh);
+	setVh();
 
 	let pathname = window.location.pathname.split("/");
 	pathname = pathname[pathname.length - 1];

@@ -72,9 +72,8 @@
 
 
 /** page__ai-chat *******************************************************/
-#page__ai-chat{position:relative; background:#F5F1EC; border-radius:2rem 2rem 0 0; overflow-y:scroll; overflow-x:hidden; /*display: flex; flex-direction: column;*/ scroll-snap-align: end;}
-/* .ai__chat-inner{position:absolute; left:0; top:0; width: 100%; min-height: 100%; padding:2rem 1.25rem; box-sizing:border-box;} */
-.ai__chat-inner{/*width: 100%; min-height: 100%;*/ padding:2rem 1.25rem; box-sizing:border-box;}
+#page__ai-chat{position:relative; background:#F5F1EC; border-radius:2rem 2rem 0 0; overflow:hidden;}
+.ai__chat-inner{padding:2rem 1.25rem; box-sizing:border-box; position:absolute; left:0; bottom:0; width:100%;}
 
 
 .chat__item{margin:.75rem 20% .75rem .75rem;}
