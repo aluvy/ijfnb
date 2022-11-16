@@ -5,7 +5,7 @@
 
 .main__product{padding:1rem 0 2rem;}
 .main__product-ttl{padding:1rem; font-size:1.125rem;}
-.main__prd__group{padding:0 1rem;}
+.myProducts{padding:0 1rem!important;}
 .main__prd__item-photo img{width:100%;}
 .main__prd__item-info{margin:1rem 0 0;}
 .main__prd__item-info dt{font-size:0.875rem; color:#111; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient: vertical; overflow: hidden;}
