@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>인정식탁</title>
+
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/common.css" />
+	<link rel="stylesheet" href="./assets/css/ai.css" />
+	<link rel="stylesheet" href="./assets/css/response.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="./assets/js/layout.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="page__ai-recom" class="height-full-header-nav-gnb">
+			<div class="ai__recom-ttl">
+				<h3>평소 간 건강에 염려가 많은 당신을 위한<br>건강한 식재료로 가득 채운 한 상</h3>
+				<span>단백질, 비타민B, 무기질이 풍부한 녹색 채소와<br>라이코펜 성분이 풍부한 토마토는<br>당신의 간 세포 재생을 책임질 만능 해결사!!</span>
+			</div>
+			<div class="ai__recom-prd">
+				<div class="recom__product">
+					<h3 class="recom__product-ttl">맞춤식탁이 추천해요</h3>
+					<div class="swiper myProducts">
+						<ul class="recom__prd__group swiper-wrapper">
+							<li class="recom__prd__item swiper-slide">
+								<a href="#">
+									<dl class="recom__prd__item-info">
+										<dt>그리운 집밥 맞춤 Plan</dt>
+										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
+									</dl>
+									<div class="recom__prd__item-photo"><img src="http://m.jengseon.epost.co.kr/web/product/medium/202112/f375d8259f24f9b1eedf588b751902d5.jpg" alt="prd image" /></div>
+								</a>
+							</li>
+							<li class="recom__prd__item swiper-slide">
+								<a href="#">
+									<dl class="recom__prd__item-info">
+										<dt>체중 감량 케어 맞춤 Plan</dt>
+										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
+									</dl>
+									<div class="recom__prd__item-photo"><img src="http://m.jengseon.epost.co.kr/web/product/medium/fnb0207_9133.jpg" alt="prd image" /></div>
+								</a>
+							</li>
+							<li class="recom__prd__item swiper-slide">
+								<a href="#">
+									<dl class="recom__prd__item-info">
+										<dt>연인 케어 맞춤 Plan</dt>
+										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
+									</dl>
+									<div class="recom__prd__item-photo"><img src="http://m.jengseon.epost.co.kr/web/product/medium/202203/9a34f1c4e86e53bc96ba1b8e11f880b9.jpg" alt="prd image" /></div>
+								</a>
+							</li>
+							<li class="recom__prd__item swiper-slide">
+								<a href="#">
+									<dl class="recom__prd__item-info">
+										<dt>체중 감량 케어 맞춤 Plan</dt>
+										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
+									</dl>
+									<div class="recom__prd__item-photo"><img src="http://m.jengseon.epost.co.kr/web/product/medium/fnb0207_13841.jpg" alt="prd image" /></div>
+								</a>
+							</li>
+							<li class="recom__prd__item swiper-slide">
+								<a href="#">
+									<dl class="recom__prd__item-info">
+										<dt>장 건강 케어 맞춤 Plan</dt>
+										<dd>오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!</dd>
+									</dl>
+									<div class="recom__prd__item-photo"><img src="http://m.jengseon.epost.co.kr/web/product/medium/fnb0207_11214.jpg" alt="prd image" /></div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="recom__product-btn">
+						<a href="https://m.ijfnb.com/">구매하러 가기</a>
+					</div>
+				</div>
+			</div><!-- .ai__recom-prd -->
+		</div><!-- #page__ai-recom -->
+
+	</div><!-- #wrap -->
+	<script>
+		$(()=>{
+			var swiper3 = new Swiper(".myProducts", {
+				effect: "coverflow",
+				grabCursor: true,
+				centeredSlides: true,
+				slidesPerView: "auto",
+				coverflowEffect: {
+					rotate: 50,
+					stretch: 0,
+					depth: 100,
+					modifier: 1,
+					slideShadows: true,
+				},
+				pagination: {
+					el: ".swiper-pagination",
+				},
+			});
+			swiper3.slideTo(1,0);
+		});
+	</script>
+</body>
+</html>

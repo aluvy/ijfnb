@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>인정식탁</title>
+
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/common.css" />
+	<link rel="stylesheet" href="./assets/css/ai.css" />
+	<link rel="stylesheet" href="./assets/css/response.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="./assets/js/layout.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="page__ai-intro">
+			<div class="page__ai-inner">
+				<img src="./assets/img/common/logo.png" alt="logo" />
+				<p>AI 맞춤형 식탁 제안</p>
+			</div>
+		</div><!-- #page__ai-intro -->
+
+	</div><!-- #wrap -->
+	<script>
+		$(()=>{
+			setTimeout(() => {
+				window.location.href = "./ai-main.html";
+			}, 2500);
+		});
+	</script>
+</body>
+</html>

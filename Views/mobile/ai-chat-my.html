@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>인정식탁</title>
+
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/common.css" />
+	<link rel="stylesheet" href="./assets/css/ai.css" />
+	<link rel="stylesheet" href="./assets/css/response.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="./assets/js/layout.js"></script>
+
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="page__ai-chat" class="height-full-header-nav-gnb">
+			<div class="ai__chat-inner">
+				<div class="ai__chat-notice">
+					<p>AI 가 연결되었습니다.</p>
+				</div>
+
+			</div><!-- .ai__chat-inner -->
+		</div><!-- #page__ai-chat -->
+
+	</div><!-- #wrap -->
+	<script>
+		$(()=>{
+			printChat(500, step_gender);
+
+			// flat
+			$(document).on("click", ".chat__item-btn.select-flat button", function(){
+				$(this).addClass("active");
+				$(this).parents(".chat__item-btn").find("button").prop("disabled", true);
+			})
+
+			// multi
+			$(document).on("click", ".chat__item-btn.select-multi button", function(e){
+				if( $(this).hasClass("active") ){
+					$(this).removeClass("active");
+				} else {
+					$(this).addClass("active");
+				}
+
+				let select = $(this).parents(".chat__group").find(".active").length;
+				let maxSelect = $(this).parents(".chat__group").data("select");
+				let func = $(this).parents(".chat__group").data("function");
+				
+				if( select >= maxSelect ){
+					$(this).parents(".chat__item-btn").find("button").prop("disabled", true);
+					eval(func)
+				}
+			})
+			
+		});
+
+		const step_gender = {
+			text : `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">너무 반가워요!</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble">전 남자예요! 당신은요?</div>
+					</div>
+				</div>
+			`,
+			answer: `
+				<div class="chat__group speaker-customer">
+					<div class="chat__item">
+						<div class="chat__item-btn select-flat">
+							<button type="button" class="info-gender" onclick="printChat(1000, step_age)">여성</button>
+							<button type="button" class="info-gender" onclick="printChat(1000, step_age2)">남성</button>
+						</div>
+					</div>
+				</div>
+			`,
+		}
+
+		const step_age = {
+			text : `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">여성 분이시군요!</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble">실례지만 나이대는 어떻게 되세요?</div>
+					</div>
+				</div>
+			`,
+			answer: `
+				<div class="chat__group speaker-customer" data-select="2" data-function="printChat(1000, step1)">
+					<div class="chat__item">
+						<div class="chat__item-btn select-flat">
+							<button type="button" onclick="printChat(1000, step_tall)">10대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">20대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">30대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">40대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">50대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">60대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">그 이상</button>
+						</div>
+					</div>
+				</div>
+			`,
+		}
+
+		const step_age2 = {
+			text : `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">저랑 같은 남성 이군요!</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble">실례지만 나이대는 어떻게 되세요?</div>
+					</div>
+				</div>
+			`,
+			answer: `
+				<div class="chat__group speaker-customer" data-select="2" data-function="printChat(1000, step1)">
+					<div class="chat__item">
+						<div class="chat__item-btn select-flat">
+							<button type="button" onclick="printChat(1000, step_tall)">10대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">20대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">30대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">40대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">50대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">60대</button>
+							<button type="button" onclick="printChat(1000, step_tall)">그 이상</button>
+						</div>
+					</div>
+				</div>
+			`,
+		}
+
+		const step_tall = {
+			text : `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">고객님의 키를 알 수 있을까요?</div>
+					</div>
+				</div>
+			`,
+			answer: `
+				<div class="chat__group speaker-customer">
+					<div class="chat__item">
+						<div class="chat__item-btn select-flat">
+							<button type="button" onclick="printChat(1000, step_weight)">130cm 이하</button>
+							<button type="button" onclick="printChat(1000, step_weight)">130~140cm</button>
+							<button type="button" onclick="printChat(1000, step_weight)">140~150cm</button>
+							<button type="button" onclick="printChat(1000, step_weight)">150~160cm</button>
+							<button type="button" onclick="printChat(1000, step_weight)">160~170cm</button>
+							<button type="button" onclick="printChat(1000, step_weight)">170~180cm</button>
+							<button type="button" onclick="printChat(1000, step_weight)">180~190cm</button>
+							<button type="button" onclick="printChat(1000, step_weight)">190cm 이상</button>
+						</div>
+					</div>
+				</div>
+			`,
+		}
+
+		const step_weight = {
+			text : `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">몸무게도 알려주세요!</div>
+					</div>
+				</div>
+			`,
+			answer: `
+				<div class="chat__group speaker-customer">
+					<div class="chat__item">
+						<div class="chat__item-btn select-flat">
+							<button type="button" onclick="printChat(1000, step_weight_result)">40kg 이하</button>
+							<button type="button" onclick="printChat(1000, step_weight_result)">40~50kg</button>
+							<button type="button" onclick="printChat(1000, step_weight_result)">50~60kg</button>
+							<button type="button" onclick="printChat(1000, step_weight_result)">60~70kg</button>
+							<button type="button" onclick="printChat(1000, step_weight_result)">70~80kg</button>
+							<button type="button" onclick="printChat(1000, step_weight_result)">80~90kg</button>
+							<button type="button" onclick="printChat(1000, step_weight_result)">90~100kg</button>
+							<button type="button" onclick="printChat(1000, step_weight_result)">100kg 이상</button>
+						</div>
+					</div>
+				</div>
+			`,
+		}
+
+		const step_weight_result = {
+			text : `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">건강 관리가 필요해보여요!!</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble">고객님에게 가장 적합한 하루 열량은 <span class="tred">000</span>칼로리 입니다!</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble">오늘은 어떤 음식이 땡기시나요?</div>
+					</div>
+				</div>
+			`,
+			answer: `
+				<div class="chat__group speaker-customer">
+					<div class="chat__item">
+						<div class="chat__item-btn select-flat">
+							<button type="button" class="wfull" onclick="printChat(1000, step_favorit)">바닷소리가 들리는 지중해 식단</button>
+							<button type="button" class="wfull" onclick="printChat(1000, step_favorit)">고급 와인과 함께~ 이태리 식단</button>
+							<button type="button" class="wfull" onclick="printChat(1000, step_favorit)">엘레강스 한 동유럽 풍 식단</button>
+							<button type="button" class="wfull" onclick="printChat(1000, step_favorit)">짜짜라!! 호이호이! 중국 식단</button>
+							<button type="button" class="wfull" onclick="printChat(1000, step_favorit)">오이시이~ 깔끔한 일본 식단</button>
+							<button type="button" class="wfull" onclick="printChat(1000, step_favorit)">역시 난 한국인! 한국 식단</button>
+						</div>
+					</div>
+				</div>
+			`,
+		}
+
+		const step_favorit = {
+			text : `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">건강한 식단을 원하세요?</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble">고객님이 선호하는 식단을 선택해주세요!</div>
+					</div>
+				</div>
+			`,
+			answer: `
+				<div class="chat__group speaker-customer">
+					<div class="chat__item">
+						<div class="chat__item-btn select-flat">
+							<button type="button" class="wfull" onclick="printChat(1000, step_health)">체중을 감량하고 싶어요!</button>
+							<button type="button" class="wfull" onclick="printChat(1000, step_health)">인스턴트 말고 건강한 음식이 좋아요!</button>
+							<button type="button" class="wfull" onclick="printChat(1000, step_health)">체력보강! 든든한 식단이 좋아요!</button>
+							<button type="button" class="wfull" onclick="printChat(1000, step_health)">부모님이 해주신 집밥이 먹고 싶어요!</button>
+						</div>
+					</div>
+				</div>
+			`,
+		}
+
+		const step_health = {
+			text : `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">혹시 어디 불편하신가요?</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble">현재 고객님 건강에 문제되는 질환 3가지만 선택해주세요!</div>
+					</div>
+				</div>
+			`,
+			answer: `
+				<div class="chat__group speaker-customer" data-select="3" data-function="result()">
+					<div class="chat__item select-multi">
+						<div class="chat__item-btn select-multi">
+							<button type="button">당뇨</button>
+							<button type="button">심혈관</button>
+							<button type="button">간질환</button>
+							<button type="button">암 예방</button>
+							<button type="button">골다공증</button>
+							<button type="button">빈혈</button>
+							<button type="button">변비</button>
+							<button type="button">내졸중</button>
+							<button type="button" onclick="result()">없음</button>
+						</div>
+					</div>
+				</div>
+			`,
+		}
+
+		const printChat = function(time, data){
+
+			const chating = `<div class="chat__ing"><div class="chat__ing-group"><span></span><span></span><span></span></div></div>`;
+			$(document).find(".ai__chat-inner").append(chating);
+
+			$("#page__ai-chat").scrollTop(50000000000000)
+
+			setTimeout(() => {
+				$(document).find(".chat__ing").remove();
+				$(document).find(".ai__chat-inner").append(data.text);
+				$(document).find(".ai__chat-inner").append(data.answer);
+
+				$("#page__ai-chat").scrollTop(50000000000000)
+			}, time);
+		}
+		
+
+		const result = function(){
+			let activeBtn = Array.from($(document).find(".ai__chat-inner button.active"));
+			console.log(activeBtn);
+
+			let result_data = [];
+			activeBtn.forEach((item, index)=>{
+				result_data.push(item.textContent);
+			})
+			localStorage.setItem("result_data", JSON.stringify(result_data));
+			window.location.href = "ai-result.html";
+		}
+	</script>
+</body>
+</html>

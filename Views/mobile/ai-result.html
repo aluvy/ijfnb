@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>인정식탁</title>
+
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/common.css" />
+	<link rel="stylesheet" href="./assets/css/ai.css" />
+	<link rel="stylesheet" href="./assets/css/response.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="./assets/js/layout.js"></script>
+
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="page__ai-result" class="height-full-header-nav-gnb">
+			<div class="ai__result-ttl">
+				<h3>현재 당신에게 맞는<br>맞춤 식탁 SET을 알려드릴게요</h3>
+				<small>지금 나에게 필요한 제품을 추천해주는<br>맞춤식탁 전문 브랜드 '인정식탁'</small>
+				<p class="result__wrap"></p>
+			</div>
+			<div class="ai__result-motion">
+				<div class="ai__result-motion-group">
+					<span></span><span></span><span></span><span></span><span></span><span></span>
+				</div>
+			</div>
+		</div><!-- #page__ai-main -->
+
+	</div><!-- #wrap -->
+	<script>
+		$(()=>{
+			let result_data = JSON.parse(localStorage.getItem("result_data"));
+			localStorage.removeItem("result_data");
+
+			let resultHTML = `
+				<span>${result_data[1]}</span>
+				<span>${result_data[0]}</span>
+				<span>${result_data[5]}</span>
+			`;
+			if( result_data.length > 6 ){
+				resultHTML += `<span>${result_data[6]}, ${result_data[7]}, ${result_data[8]}</span>`;
+			}
+			$(document).find(".result__wrap").html(resultHTML);
+
+			setTimeout(() => {
+				window.location.href = "./ai-recom.html";
+			}, 3000);
+		});
+	</script>
+</body>
+</html>
