@@ -259,7 +259,7 @@
 			answer: `
 				<div class="chat__group speaker-customer" data-select="3" data-function="result()">
 					<div class="chat__item select-multi">
-						<div class="chat__item-btn select-multi">
+						<div class="chat__item-btn select-multi select-headlth">
 							<button type="button" value="당뇨">당뇨</button>
 							<button type="button" value="심혈관">심혈관</button>
 							<button type="button" value="간질환">간질환</button>
@@ -268,7 +268,7 @@
 							<button type="button" value="빈혈">빈혈</button>
 							<button type="button" value="변비">변비</button>
 							<button type="button" value="내졸중">내졸중</button>
-							<button type="button" value="질환 없음" onclick="result()">없음</button>
+							<button type="button" value="질환 없음" onclick="result('none')">없음</button>
 						</div>
 					</div>
 				</div>
@@ -296,7 +296,10 @@
 		}
 		
 
-		const result = function(){
+		const result = function(none){
+			if( none == 'none' ){	// 질환 없음 선택
+				$(document).find(".select-headlth button").removeClass("active");
+			}
 			let activeBtn = Array.from($(document).find(".ai__chat-inner button.active"));
 
 			let result_data = [];

@@ -27,6 +27,11 @@
 	#page__ai-main{padding-top:6rem;}
 }
 
+@media screen and (max-height: 700px) {
+	#page__ai-main{padding-top:5rem; background-size:19rem auto; background-position:right -25% bottom 15%;}
+	.ai__main-ttl span{font-size:1.2rem;}
+}
+
 @media screen and (max-height: 620px) {
 	#page__ai-main{padding-top:4rem;}
 }
