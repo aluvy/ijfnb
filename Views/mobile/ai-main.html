@@ -14,63 +14,21 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
 	<script src="./assets/js/layout.js"></script>
-
-	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
 </head>
 <body>
 	<div id="wrap">
 
 		<div id="page__ai-main" class="height-full-header-nav-gnb">
-			<div class="ai__main-ttl"></div>
-			<div class="ai__main-btn"></div>
+			<div class="ai__main-ttl">
+				<h3>AI기술을 활용한<br>인정식탁의 맞춤형 식탁</h3>
+				<span>나를 알아보고 싶다면 [나만의 식탁]<br>오늘 뭘 먹을지 고민된다면<br>[오늘의 식탁]을 선택해주세요!</span>
+			</div>
+			<div class="ai__main-btn">
+				<button type="button" onclick="window.location.href='./ai-chat-my.html'">나만의 식탁</button>
+				<button type="button" onclick="window.location.href='./ai-chat-today.html'">오늘의 식탁</button>
+			</div>
 		</div><!-- #page__ai-main -->
 
 	</div><!-- #wrap -->
-	<script>
-		$(()=>{
-			printAI(step2);
-		});
-		
-		const step1 = {
-			title : `
-				<h3>AI기술을 활용한<br>인정식탁의 맞춤형 식탁</h3>
-				<span>건강까지 고려하는 맞춤형 식재료<br>추천받아 보실래요?</span>
-			`,
-			button: `
-				<button type="button" onclick="printAI(step2)">좋아! 추천해줘</button>
-				<button type="button" onclick="printAI(step2)">아냐, 난 나를 잘 알아</button>
-			`,
-		}
-		const step2 = {
-			title : `
-				<h3>AI기술을 활용한<br>인정식탁의 맞춤형 식탁</h3>
-				<span>나를 알아보고 싶다면 [나만의 식탁]<br>오늘 뭘 먹을지 고민된다면<br>[오늘의 식탁]을 선택해주세요!</span>
-			`,
-			// button: `
-			// 	<button type="button" onclick="printAI(step3)">나만의 식탁</button>
-			// 	<button type="button" onclick="printAI(step3)">오늘의 식탁</button>
-			// `,
-			button: `
-				<button type="button" onclick="window.location.href='./ai-chat-my.html'">나만의 식탁</button>
-				<button type="button" onclick="window.location.href='./ai-chat-today.html'">오늘의 식탁</button>
-			`,
-		} 
-		const step3 = {
-			title : `
-				<h3>나도 못맞추는 내 입맛<br>AI가 딱 찾아 드려요</h3>
-				<span>건강까지 고려하는 맞춤형 식재료<br>추천받아 보실래요?</span>
-			`,
-			button: `
-				<button type="button" onclick="window.location.href='./ai-chat.html'">그렇다면 부탁할게</button>
-				<button type="button" onclick="window.location.href='./ai-chat.html'">속는 셈치고 한 번 해볼게</button>
-			`,
-		} 
-
-		const printAI = (data) => {
-			$(document).find(".ai__main-ttl").html(data.title);
-			$(document).find(".ai__main-btn").html(data.button);
-		}
-	</script>
 </body>
 </html>

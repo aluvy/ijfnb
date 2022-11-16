@@ -1,5 +1,3 @@
-#page__index{}
-
 .mySlide{width: 100%;}
 .mySlide img{width: 100%;}
 .mySlide .swiper-pagination-bullet{width:0.625rem; height: 0.625rem; border-radius:0.625rem; background:#fff; opacity: .4; transition:all .3s;}
@@ -8,9 +6,6 @@
 .main__product{padding:1rem 0 2rem;}
 .main__product-ttl{padding:1rem;}
 .main__prd__group{padding:0 1rem;}
-.main__prd__item{}
-.main__prd__item a{}
-.main__prd__item-photo{}
 .main__prd__item-photo img{width:100%;}
 .main__prd__item-info{margin:1rem 0 0;}
 .main__prd__item-info dt{font-size:0.875rem; color:#111; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient: vertical; overflow: hidden;}

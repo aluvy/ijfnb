@@ -70,6 +70,5 @@ html, body{width:100%; min-height: 100%;}
 .height-full-header-nav-gnb{min-height:calc(100vh - 11.513rem)}
 
 /* price */
-.price{}
 .price-flat{font-size:0.9375rem; font-weight:700; color:#111;}
 .price-sale{font-size:0.8125rem; color:#bbb; text-decoration: line-through;}
