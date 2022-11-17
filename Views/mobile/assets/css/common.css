@@ -68,10 +68,6 @@ html, body{width:100%; min-height: var(--vh);}
 
 /** common ********************************************************************/
 /* height */
-/* .somediv{height:calc(var(--vh, 1vh) * 100);} */
-/* 100이면 100vh */
-/* min-height:var(--vh); */
-
 .height-full{min-height:var(--vh);}
 .height-full-header{min-height:calc(var(--vh) - 4.375rem)}
 .height-full-header-nav{min-height:calc(var(--vh) - 7.375rem)}
@@ -80,15 +76,6 @@ html, body{width:100%; min-height: var(--vh);}
 .height-fix-full-header{height:calc(var(--vh) - 4.375rem)}
 .height-fix-full-header-nav{height:calc(var(--vh) - 7.375rem)}
 .height-fix-full-header-nav-gnb{height:calc(var(--vh) - 11.513rem)}
-
-/* .height-full{min-height:100vh;}
-.height-full-header{min-height:calc(100vh - 4.375rem)}
-.height-full-header-nav{min-height:calc(100vh - 7.375rem)}
-.height-full-header-nav-gnb{min-height:calc(100vh - 11.513rem)}
-.height-fix-full{height:100vh;}
-.height-fix-full-header{height:calc(100vh - 4.375rem)}
-.height-fix-full-header-nav{height:calc(100vh - 7.375rem);}
-.height-fix-full-header-nav-gnb{height: 100vh; height: -webkit-fill-available;} */
 
 /* price */
 .price-flat{font-size:0.9375rem; font-weight:700; color:#111;}

@@ -4,11 +4,29 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<link rel="shortcut icon" href="./Views/pc/favicon.ico">
+	<title>인정식탁</title>
+	<style>
+		*{margin:0; padding:0;}
+		ul, li{list-style:none;}
+		a{text-decoration: none; color:inherit}
+		#wrap{width: 100vw; height: 100vh; display:flex; align-items:center; justify-content: center; background:#f7f7f7;}
+		#wrap .box{width:600px; height: 250px; box-sizing:border-box; background:#fff; padding:2rem; box-shadow:10px 10px 10px #00000010; border-radius:1rem; display:flex; flex-direction: column; align-items:center; justify-content: center; gap: 2.5rem;}
+		#wrap .box img{width: 170px;}
+		#wrap .box ul{display:flex; align-items:center; justify-content: center; gap: 1rem;}
+		#wrap .box ul li a{display:block; width:120px; height:42px; box-sizing:border-box; border:1px solid #ff5340; color:#ff5340; font-weight:bold; display:flex; align-items: center; justify-content: center; border-radius:5px; transition:all .3s;}
+		#wrap .box ul li a:hover{background:#ff5340; color:#fff;}
+	</style>
 </head>
 <body>
-	<script>
-		window.location.href = "./Views/mobile/index.html";
-	</script>
+	<div id="wrap">
+		<div class="box">
+			<img src="./Views/pc/assets/img/common/logo.png" />
+			<ul>
+				<li><a href="./Views/pc/index.html">PC</a></li>
+				<li><a href="./Views/mobile/index.html">Mobile</a></li>
+			</ul>
+		</div>
+	</div>
 </body>
 </html>

@@ -30,35 +30,70 @@
 	</div><!-- #wrap -->
 	<script>
 		$(()=>{
-			printChat(500, step_weight_result);
+			printChat(500, step_diet);
 
-			// flat
-			$(document).on("click", ".chat__item-btn.select-flat button", function(){
-				$(this).addClass("active");
-				$(this).parents(".chat__item-btn").find("button").prop("disabled", true);
-			})
+			$(document).on("click", ".chat__item-btn button", function(){
 
-			// multi
-			$(document).on("click", ".chat__item-btn.select-multi button", function(e){
+				if( $(this).hasClass("btn__reset") ){ return }
+
+				$(document).find(".btn__reset").removeClass("active");
+
+				let active = $(this).parents(".speaker-customer").find(".active").length;	// active length
+				let chkNum = $(this).parents(".speaker-customer").data("select");			// check length
+
+				// console.log(active, chkNum)
+				
 				if( $(this).hasClass("active") ){
 					$(this).removeClass("active");
 				} else {
-					$(this).addClass("active");
+					if( active < chkNum ){
+						$(this).addClass("active");
+					}
 				}
 
-				let select = $(this).parents(".chat__group").find(".active").length;
-				let maxSelect = $(this).parents(".chat__group").data("select");
-				let func = $(this).parents(".chat__group").data("function");
-				
-				if( select >= maxSelect ){
-					$(this).parents(".chat__item-btn").find("button").prop("disabled", true);
-					eval(func)
+				let active2 = $(this).parents(".speaker-customer").find(".active").length;	// active length
+
+				// next step
+				if( active2 >= chkNum ){
+					if( !$(this).parents(".speaker-customer").hasClass("select-multi") ){
+						$(this).parents(".speaker-customer").find("button").prop("disabled", true);
+					}
+					$(document).find(".btn__result").prop("disabled", false);
+					eval($(this).parents(".speaker-customer").data("fuc"));
+				} else {
+					$(document).find(".btn__result").prop("disabled", true);
 				}
+			})
+
+			// 없음 클릭
+			$(document).on("click", ".btn__reset", function(){
+
+				if( $(this).hasClass("active") ){
+					console.log('true')
+					$(this).removeClass("active");
+					$(document).find(".btn__result").prop("disabled", true);
+				} else {
+					console.log('else');
+					$(this).parents(".speaker-customer").find("button").removeClass("active");
+					$(this).parents(".speaker-customer").find("button").prop("disabled", false);
+					$(this).addClass("active");
+					$(document).find(".btn__result").prop("disabled", false);
+				}
+			})
+
+			// 다시하기 클릭
+			$(document).on("click", ".btn__clear", function(){
+				let status = confirm("처음부터 다시 시작하시겠습니까?")
+				if( !status ){ return }
+				window.location.href = './ai.html';
 			})
 			
 		});
+		
+		
+		const chating = `<div class="chat__ing"><div class="chat__ing-group"><span></span><span></span><span></span></div></div>`;
 
-		const step_weight_result = {
+		const step_diet = {
 			text : `
 				<div class="chat__group speaker-injung">
 					<div class="chat__item">
@@ -67,15 +102,15 @@
 				</div>
 			`,
 			answer: `
-				<div class="chat__group speaker-customer">
+				<div class="chat__group speaker-customer step_diet" data-select="1" data-fuc="printChat(1000, step_favorit)">
 					<div class="chat__item">
-						<div class="chat__item-btn select-flat">
-							<button type="button" value="지중해 식단" class="wfull" onclick="printChat(1000, step_favorit)">바닷소리가 들리는 지중해 식단</button>
-							<button type="button" value="이태리 식단" class="wfull" onclick="printChat(1000, step_favorit)">고급 와인과 함께~ 이태리 식단</button>
-							<button type="button" value="동유럽 식단" class="wfull" onclick="printChat(1000, step_favorit)">엘레강스 한 동유럽 풍 식단</button>
-							<button type="button" value="중국 식단" class="wfull" onclick="printChat(1000, step_favorit)">짜짜라!! 호이호이! 중국 식단</button>
-							<button type="button" value="일본 식단" class="wfull" onclick="printChat(1000, step_favorit)">오이시이~ 깔끔한 일본 식단</button>
-							<button type="button" value="한국 식단" class="wfull" onclick="printChat(1000, step_favorit)">역시 난 한국인! 한국 식단</button>
+						<div class="chat__item-btn">
+							<button type="button" value="지중해 식단" class="wfull">바닷소리가 들리는 지중해 식단</button>
+							<button type="button" value="이태리 식단" class="wfull">고급 와인과 함께~ 이태리 식단</button>
+							<button type="button" value="동유럽 식단" class="wfull">엘레강스 한 동유럽 풍 식단</button>
+							<button type="button" value="중국 식단" class="wfull">짜짜라!! 호이호이! 중국 식단</button>
+							<button type="button" value="일본 식단" class="wfull">오이시이~ 깔끔한 일본 식단</button>
+							<button type="button" value="한국 식단" class="wfull">역시 난 한국인! 한국 식단</button>
 						</div>
 					</div>
 				</div>
@@ -94,13 +129,13 @@
 				</div>
 			`,
 			answer: `
-				<div class="chat__group speaker-customer">
+				<div class="chat__group speaker-customer step_favorit" data-select="1" data-fuc="printChat(1000, step_health)">
 					<div class="chat__item">
-						<div class="chat__item-btn select-flat">
-							<button type="button" value="체중감량" class="wfull" onclick="printChat(1000, step_health)">체중을 감량하고 싶어요!</button>
-							<button type="button" value="건강식" class="wfull" onclick="printChat(1000, step_health)">인스턴트 말고 건강한 음식이 좋아요!</button>
-							<button type="button" value="체력보강" class="wfull" onclick="printChat(1000, step_health)">체력보강! 든든한 식단이 좋아요!</button>
-							<button type="button" value="집밥" class="wfull" onclick="printChat(1000, step_health)">부모님이 해주신 집밥이 먹고 싶어요!</button>
+						<div class="chat__item-btn">
+							<button type="button" value="체중감량" class="wfull">체중을 감량하고 싶어요!</button>
+							<button type="button" value="건강식" class="wfull">인스턴트 말고 건강한 음식이 좋아요!</button>
+							<button type="button" value="체력보강" class="wfull">체력보강! 든든한 식단이 좋아요!</button>
+							<button type="button" value="집밥" class="wfull">부모님이 해주신 집밥이 먹고 싶어요!</button>
 						</div>
 					</div>
 				</div>
@@ -119,9 +154,9 @@
 				</div>
 			`,
 			answer: `
-				<div class="chat__group speaker-customer" data-select="3" data-function="result()">
-					<div class="chat__item select-multi">
-						<div class="chat__item-btn select-multi select-headlth">
+				<div class="chat__group speaker-customer select-multi step_health" data-select="3" data-fuc="">
+					<div class="chat__item">
+						<div class="chat__item-btn">
 							<button type="button" value="당뇨">당뇨</button>
 							<button type="button" value="심혈관">심혈관</button>
 							<button type="button" value="간질환">간질환</button>
@@ -130,42 +165,35 @@
 							<button type="button" value="빈혈">빈혈</button>
 							<button type="button" value="변비">변비</button>
 							<button type="button" value="내졸중">내졸중</button>
-							<button type="button" value="질환 없음" onclick="result('none')">없음</button>
+							<button type="button" class="btn__reset" value="질환 없음">없음</button>
 						</div>
 					</div>
+				</div>
+				<div class="ai__chat-finish">
+					<button type="reset" class="btn__clear">다시하기</button>
+					<button type="button" onclick="result()" class="btn__result" disabled>입력완료</button>
 				</div>
 			`,
 		}
 
 		const printChat = function(time, data){
-
-			const chating = `<div class="chat__ing"><div class="chat__ing-group"><span></span><span></span><span></span></div></div>`;
 			$(document).find(".ai__chat-inner").append(chating);
 			
-			$(".ai__chat-inner").scrollTop(5000000000);
-
-			// $(window).scrollTop($(window).height());
-			// $("#page__ai-chat").scrollTop($(document).find(".ai__chat-inner").height());
-			// $(".ai__chat-inner").scrollTop($(document).find(".ai__chat-inner").height());
+			scrollTop()
 
 			setTimeout(() => {
 				$(document).find(".chat__ing").remove();
 				$(document).find(".ai__chat-inner").append(data.text);
 				$(document).find(".ai__chat-inner").append(data.answer);
 			
-				$(".ai__chat-inner").scrollTop(5000000000);
-
-				// $(window).scrollTop($(window).height());
-				// $("#page__ai-chat").scrollTop($(document).find(".ai__chat-inner").height());
-				// $(".ai__chat-inner").scrollTop($(document).find(".ai__chat-inner").height());
+				scrollTop()
 			}, time);
 		}
 		
 
 		const result = function(none){
-			if( none == 'none' ){	// 질환 없음 선택
-				$(document).find(".select-headlth button").removeClass("active");
-			}
+			console.log('result');
+			
 			let activeBtn = Array.from($(document).find(".ai__chat-inner button.active"));
 
 			let result_data = [];
@@ -174,6 +202,10 @@
 			})
 			localStorage.setItem("today_data", JSON.stringify(result_data));
 			window.location.href = "ai-result.html";
+		}
+
+		const scrollTop = function(){
+			$(".ai__chat-inner").scrollTop(5000000000);
 		}
 	</script>
 </body>

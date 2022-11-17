@@ -1,26 +1,14 @@
-
-// let vh = window.innerHeight * 0.01;
-// document.documentElement.style.setProperty('--vh', vh+"px");
-// // resize
-// window.addEventListener("resize", ()=>{
-// 	let vh = window.innerHeight * 0.01;
-// 	document.documentElement.style.setProperty('--vh', vh+"px");
-// })
-
-
-
-
 $(()=>{
 
-	// vh
-	let vh = 0;
+	// --vh
 	const setVh = () => {
-		// document.documentElement.style.setProperty('--vh', `${window.outerHeight}px`);
 		document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
 	};
 	window.addEventListener('resize', setVh);
 	setVh();
 
+
+	// append
 	let pathname = window.location.pathname.split("/");
 	pathname = pathname[pathname.length - 1];
 
@@ -28,14 +16,21 @@ $(()=>{
 	let NavElem = `<nav id="nav"></nav>`;
 	let GnbElem = `<nav id="gnb"></nav>`;
 	let FooterElem = `<footer id="footer"></footer>`;
-	$(document).find("#wrap").prepend(NavElem);
-	$(document).find("#wrap").prepend(HeaderElem);
+
+	if( !(pathname.includes("ai.html")) ){
+		$(document).find("#wrap").prepend(NavElem);
+		$(document).find("#wrap").prepend(HeaderElem);
+	}
+
 	$(document).find("#wrap").append(GnbElem);
-	
-	if( ! ( pathname.includes("ai.html") || pathname.includes("ai-main.html") || pathname.includes("ai-chat-my.html") || pathname.includes("ai-chat-today.html") || pathname.includes("ai-result.html") ) ){
+
+	if( pathname.includes("index.html") || pathname.includes("ai-recom.html")){
 		$(document).find("#wrap").append(FooterElem);
 	}
 
+
+
+	// html
 	let Header = `
 		<div class="header__nav"><a href="#">메뉴</a></div>
 		<h1 class="header__logo"><a href="./index.html"><img src="./assets/img/common/logo.png" alt="logo" /></a></h1>
@@ -54,7 +49,7 @@ $(()=>{
 		</ul>
 	`;
 	$(document).find("#nav").html(Nav);
-	if( pathname.includes("ai.html") || pathname.includes("ai-main.html") || pathname.includes("ai-chat-my.html") || pathname.includes("ai-chat-today.html") || pathname.includes("ai-result.html") ){
+	if( !(pathname.includes("index.html")) ){
 		$(document).find(".nav__item").removeClass("active");
 		$(document).find(".nav__item").eq(2).addClass("active");
 	}
@@ -109,25 +104,20 @@ $(()=>{
 
 	let Gnb = `
 		<ul class="gnb__group">
-			<li class="gnb__item-home"><a href="#" class="active">home</a></li>
+			<li class="gnb__item-home"><a href="./index.html" class="active">home</a></li>
 			<li class="gnb__item-ai"><a href="./ai.html">ai</a></li>
 			<li class="gnb__item-search"><a href="#">search</a></li>
 			<li class="gnb__item-mypage"><a href="#">mypage</a></li>
 		</ul>
 	`;
 	$(document).find("#gnb").html(Gnb);
-	if( pathname.includes("ai.html") || pathname.includes("ai-main.html") || pathname.includes("ai-chat-my.html") || pathname.includes("ai-chat-today.html") || pathname.includes("ai-result.html") ){
+	if( !(pathname.includes("index.html")) ){
 		$(document).find(".gnb__group a").removeClass("active");
 		$(document).find(".gnb__group li").eq(1).find("a").addClass("active");
 	}
 
 
-
-	$(document).on("click", ".header__nav", function(e){
-		e.preventDefault();
-	})
-
-	$(document).on("click", ".header__cart", function(e){
+	$(document).on("click", ".footer__social a", function(e){
 		e.preventDefault();
 	})
 
