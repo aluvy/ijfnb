@@ -279,19 +279,23 @@
 
 			const chating = `<div class="chat__ing"><div class="chat__ing-group"><span></span><span></span><span></span></div></div>`;
 			$(document).find(".ai__chat-inner").append(chating);
+			
+			$(".ai__chat-inner").scrollTop(5000000000);
 
-			$(window).scrollTop($(window).height());
-			$("#page__ai-chat").scrollTop($(document).find(".ai__chat-inner").height());
-			$(".ai__chat-inner").scrollTop($(document).find(".ai__chat-inner").height());
+			// $(window).scrollTop($(window).height());
+			// $("#page__ai-chat").scrollTop($(document).find(".ai__chat-inner").height());
+			// $(".ai__chat-inner").scrollTop($(document).find(".ai__chat-inner").height());
 
 			setTimeout(() => {
 				$(document).find(".chat__ing").remove();
 				$(document).find(".ai__chat-inner").append(data.text);
 				$(document).find(".ai__chat-inner").append(data.answer);
 
-				$(window).scrollTop($(window).height());
-				$("#page__ai-chat").scrollTop($(document).find(".ai__chat-inner").height());
-				$(".ai__chat-inner").scrollTop($(document).find(".ai__chat-inner").height());
+				$(".ai__chat-inner").scrollTop(5000000000);
+
+				// $(window).scrollTop($(window).height());
+				// $("#page__ai-chat").scrollTop($(document).find(".ai__chat-inner").height());
+				// $(".ai__chat-inner").scrollTop($(document).find(".ai__chat-inner").height());
 			}, time);
 		}
 		
