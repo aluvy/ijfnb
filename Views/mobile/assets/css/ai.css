@@ -73,7 +73,7 @@
 
 /** page__ai-chat *******************************************************/
 #page__ai-chat{position:relative; background:#F5F1EC; border-radius:2rem 2rem 0 0; overflow:hidden;}
-.ai__chat-inner{padding:2rem 1.25rem; box-sizing:border-box; position:absolute; left:0; bottom:0; width:100%; overflow-y:scroll}
+.ai__chat-inner{padding:2rem 1.25rem; box-sizing:border-box; position:absolute; left:0; bottom:0; width:100%; height: 100%; overflow-y:scroll}
 
 
 .chat__item{margin:.75rem 20% .75rem .75rem;}
