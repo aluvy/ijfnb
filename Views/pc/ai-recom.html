@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>인정식탁</title>
+
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/common.css" />
+	<link rel="stylesheet" href="./assets/css/ai.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="./assets/js/layout.js"></script>
+
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="page__ai-recom">
+			<div class="ai__recom-ttl">
+				<h3>평소 간 건강에 염려가 많은 당신을 위한<br>건강한 식재료로 가득 채운 한 상</h3>
+				<span>단백질, 비타민B, 무기질이 풍부한 녹색 채소와 라이코펜 성분이 풍부한 토마토는<br>당신의 간 세포 재생을 책임질 만능 해결사!!</span>
+			</div>
+			<div class="ai__recom-prd">
+				<div class="recom__product">
+					<h3 class="recom__product-ttl">맞춤식탁이 추천해요</h3>
+					<div class="swiper myProducts">
+						<ul class="recom__prd__group swiper-wrapper"></ul>
+					</div>
+					<!-- <div class="recom__product-btn">
+						<a href="https://m.ijfnb.com/" class="btn__buy">구매하러 가기</a>
+					</div> -->
+				</div>
+			</div><!-- .ai__recom-prd -->
+		</div><!-- #page__ai-recom -->
+
+	</div><!-- #wrap -->
+	<script>
+		$(()=>{
+
+			let useData = [
+				{
+					title : "그리운 집밥 맞춤 Plan",
+					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+					image : "./assets/img/main/product1.jpg",
+					url : "https://ijfnb.com/product/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8-%EC%88%9C%EC%82%B4%EC%9D%84-%EC%A3%BD%EC%97%BC%EC%9C%BC%EB%A1%9C-%EA%B0%84%EC%9D%84-%EB%82%B8-%EC%9D%B4%EB%8F%99%EC%82%BC-%EC%95%88%EB%8F%99%EA%B0%84%EA%B3%A0%EB%93%B1%EC%96%B4-150g-x-5%ED%8C%A9/17955/category/716/display/1/",
+				},
+				{
+					title : "체중 감량 케어 맞춤 Plan",
+					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+					image : "./assets/img/main/product2.jpg",
+					url : "https://ijfnb.com/product/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8-%EC%88%9C%EC%82%B4%EC%9D%84-%EC%A3%BD%EC%97%BC%EC%9C%BC%EB%A1%9C-%EA%B0%84%EC%9D%84-%EB%82%B8-%EC%9D%B4%EB%8F%99%EC%82%BC-%EC%95%88%EB%8F%99%EA%B0%84%EA%B3%A0%EB%93%B1%EC%96%B4-150g-x-5%ED%8C%A9/17955/category/716/display/2/",
+				},
+				{
+					title : "연인 케어 맞춤 Plan",
+					summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+					image : "./assets/img/main/product3.jpg",
+					url : "https://ijfnb.com/product/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8-%EC%88%9C%EC%82%B4%EC%9D%84-%EC%A3%BD%EC%97%BC%EC%9C%BC%EB%A1%9C-%EA%B0%84%EC%9D%84-%EB%82%B8-%EC%9D%B4%EB%8F%99%EC%82%BC-%EC%95%88%EB%8F%99%EA%B0%84%EA%B3%A0%EB%93%B1%EC%96%B4-150g-x-5%ED%8C%A9/17955/category/716/display/3/",
+				},
+				// {
+				// 	title : "체중 감량 케어 맞춤 Plan",
+				// 	summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+				// 	image : "./assets/img/main/product4.jpg",
+				// 	url : "https://ijfnb.com/product/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8-%EC%88%9C%EC%82%B4%EC%9D%84-%EC%A3%BD%EC%97%BC%EC%9C%BC%EB%A1%9C-%EA%B0%84%EC%9D%84-%EB%82%B8-%EC%9D%B4%EB%8F%99%EC%82%BC-%EC%95%88%EB%8F%99%EA%B0%84%EA%B3%A0%EB%93%B1%EC%96%B4-150g-x-5%ED%8C%A9/17955/category/716/display/4/",
+				// },
+				// {
+				// 	title : "장 건강 케어 맞춤 Plan",
+				// 	summary : "오메가 3의 지방산 DHA가 풍부한 식재료는 당신의 뇌세포 활성화를 책임질 해결사! 훗!",
+				// 	image : "./assets/img/main/product5.jpg",
+				// 	url : "#",
+				// },
+			];
+
+			let resultHTML = ``;
+			useData.forEach((item, index)=>{
+				resultHTML += `
+					<li class="recom__prd__item swiper-slide">
+						<a href="${item.url}">
+							<dl class="recom__prd__item-info">
+								<dt>${item.title}</dt>
+								<dd>${item.summary}</dd>
+							</dl>
+							<div class="recom__prd__item-photo"><img src="${item.image}" alt="prd image" /></div>
+						</a>
+					</li>
+				`;
+			});
+			$(document).find(".recom__prd__group").html(resultHTML);
+
+
+			// var swiper3 = new Swiper(".myProducts", {
+			// 	effect: "coverflow",
+			// 	grabCursor: true,
+			// 	centeredSlides: true,
+			// 	slidesPerView: "auto",
+			// 	coverflowEffect: {
+			// 		rotate: 50,
+			// 		stretch: 0,
+			// 		depth: 100,
+			// 		modifier: 1,
+			// 		slideShadows: true,
+			// 	},
+			// 	pagination: {
+			// 		el: ".swiper-pagination",
+			// 	},
+			// 	on: {
+			// 		slideChange: function () {
+			// 			// console.log(this.realIndex+'번째 slide입니다.');
+			// 			// let link = $(document).find(".swiper-slide-active a").prop("href");
+			// 			let link = useData[this.realIndex].url;
+			// 			$(document).find(".btn__buy").prop("href", link);
+			// 		}
+			// 	}
+			// });
+			// swiper3.slideTo(1,0);
+		});
+	</script>
+</body>
+</html>

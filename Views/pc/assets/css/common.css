@@ -1,0 +1,105 @@
+html, body{width:100%; height:100%; min-width:1050px;}
+#wrap{position:relative; width:100%; height:100%; overflow-x: hidden; box-sizing:border-box;}
+
+/** header *********************************************************************/
+#header{border-bottom:1px solid #dbdbdb;}
+
+.header__util{width:1050px; height:36px; margin:0 auto; display:flex; align-items: center; justify-content: flex-end; gap:10px;}
+.header__util li{display:flex; align-items:center; gap:10px;}
+.header__util li + li::before{content:''; display:block; width:1px; height:13px; background:#ddd;}
+.header__util li a{font-size:14px;}
+.header__util li:first-child a{color:#FC6251}
+
+.header__mid__wrap{width:1050px; height:110px; margin:0 auto; display:flex; align-items:center; justify-content: space-between;}
+
+.header__logo img{width:10rem;}
+
+.header__search{width:570px; height: 52px; border:2px solid #FC6251; border-radius:2px; display:flex; align-items:center; justify-content: space-between; box-sizing:border-box;}
+.header__search input{flex:1 1 calc(100% - 54px); max-width:calc(100% - 54px); height:100%; border:0 none; padding:0 0 0 15px; margin:0; box-sizing:border-box; font-size:17px; font-weight:500; outline:none;}
+.header__search button{width:54px; height: 54px; border:0 none; padding:0; margin: 0; cursor:pointer; background:url(../img/common/search.png) 50% 50% no-repeat; outline:none;}
+
+.header__my{display:flex; align-items:center; gap:30px;}
+.header__my li a{display:block; padding:45px 0 0; background:url(../img/common/my.png) 50% 10% no-repeat;}
+.header__my li:nth-child(2) a{background:url(../img/common/cart.png) 20% 10% no-repeat;}
+.header__my li p{font-size:14px;}
+
+.header__gnb__group{width:1050px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;}
+
+.gnb__all{margin-right:auto}
+.gnb__all a{display:block; width:170px; height:55px; line-height:55px; padding-left:40px; background:url(../img/common/menu-all.png) 10px 50% no-repeat; box-sizing:border-box; font-size:17px; font-weight:700;}
+
+.header__gnb{display:flex; align-items:center; overflow: hidden; margin-bottom:-1px;}
+.header__gnb li{position:relative;}
+.header__gnb li::before{content:''; position:absolute; left:0; top:50%; display:block; width:1px; height:14px; margin-top:-7px; background:#ddd;}
+.header__gnb li::after{content:''; position:absolute; left:0; bottom:-5px; display:block; width:100%; height: 4px; background:#FC6251; transition:all .3s;}
+.header__gnb li a{display: block; width:145px; height:55px; padding-bottom:5px; display:flex; align-items: center; justify-content: center; font-weight:700; font-size:17px; transition:all .3s;}
+.header__gnb li:hover::after{bottom:0}
+.header__gnb li:hover a{color:#FC6251;}
+.header__gnb li.active a{color:#FC6251;}
+
+
+
+/** footer ********************************************************************/
+#footer{padding:0 0 50px;}
+
+.footer__nav__wrap{border-width:1px 0; border-style:solid; border-color:#cecece;}
+.footer__nav{width:1050px; height:49px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap: wrap;}
+.footer__nav li{display:flex; align-items:center; gap:16px;}
+.footer__nav li + li::before{content:''; display:block; width:1px; height:14px; background:#ddd;}
+.footer__nav li a{font-size:14px; color:#666; font-weight:500;}
+.footer__nav li:nth-child(2) a{color:#FC6251;}
+
+.footer__copy__wrap{display:flex; align-items:flex-start; justify-content: space-between; width:1050px; margin:0 auto; padding:30px 0 0;}
+.footer__copy{margin-right:auto;}
+.footer__copy a{width:70px; line-height:17px; font-size:12px; box-sizing:border-box; padding:0 5px; border:1px solid #ddd; display:flex; align-items:center; justify-content: space-between; color:#333;}
+.footer__copy a::after{content:'▶'; font-size:5px; color:#FC6251;}
+
+.footer__call{display:flex; align-items:center; gap:5px;}
+.footer__call span{line-height:22px; font-size:17px; color:#222; font-weight:500; padding-left:30px; background:url(../img/common/footer.png) 0 0 no-repeat; margin-right:10px;}
+
+.footer__info{margin:15px 0 0; font-size:13px; color:#999; line-height:1.4;}
+.footer__info span + span{margin-left:5px;}
+.footer__info a{width:100px; margin:10px 0 0;}
+
+.footer__social{display:flex; align-items:center; gap: 7px;}
+.footer__social p{font-size:13px; color:#999;}
+.social__item a{display:block; width:45px; height:45px; background-image:url(../img/common/footer-sns.png); background-repeat: no-repeat; font-size:0; text-indent:-9999px;}
+.social__facebook a{background-position:0 0;}
+.social__instagram a{background-position:0 -50px;}
+
+
+/** nav ***********************************************************************/
+#nav{position:relative; width:100%; height:3rem; overflow-x:scroll; overflow-y: hidden;}
+.nav__group{position:absolute; left:0; top:0; width:auto; display:flex; align-items:center; gap:2rem; padding:0 2rem; box-sizing:border-box;}
+.nav__item{position:relative;}
+.nav__item a{display:block; font-size:1.125rem; line-height:3rem; white-space: nowrap; color:#666;}
+.nav__item::before{content:''; display:block; position:absolute; left:0; bottom:-3px; width:100%; height:3px; background:#FC6251; transition:all .3s;}
+.nav__item.active::before{bottom:0;}
+.nav__item.active a{color:#FC6251; font-weight:500;}
+
+#nav::-webkit-scrollbar{height:3px; display: none;}
+#nav::-webkit-scrollbar-thumb{width:30%; background:#ffffff00; border-radius: 10px; display: none;}
+#nav::-webkit-scrollbar-track {background:#ffffff00; display: none;}
+
+
+/** gnb ************************************************************************/
+#gnb{position:fixed; left:0; bottom:0; width:100%; background:#fff; box-sizing:border-box; box-shadow:0 0 2px #00000050; z-index:109;}
+#gnb ul{display:flex; align-items:center; justify-content: space-around; height: 4.156rem;}
+#gnb ul li a{display:block; width:2.5rem; height: 2.5rem; font-size:0; text-indent:-9999px; background-size:60% auto; filter:brightness(0) grayscale(1);}
+#gnb ul li a.active{filter:brightness(1) grayscale(0);}
+
+.gnb__item-home a{background:url(../img/common/home.svg) 50% 50% no-repeat;}
+.gnb__item-ai a{background:url(../img/common/ai.svg) 50% 50% no-repeat;}
+.gnb__item-search a{background:url(../img/common/search.svg) 50% 50% no-repeat;}
+.gnb__item-mypage a{background:url(../img/common/mypage.svg) 50% 50% no-repeat;}
+
+
+
+/** common ********************************************************************/
+
+/* price */
+.price-flat{font-size:0.9375rem; font-weight:700; color:#111;}
+.price-sale{font-size:0.8125rem; color:#999; text-decoration: line-through;}
+
+/* color */
+.tred{color:#FC6251;}

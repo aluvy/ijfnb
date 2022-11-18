@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>인정식탁</title>
+
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/common.css" />
+	<link rel="stylesheet" href="./assets/css/ai.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="./assets/js/layout.js"></script>
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="page__ai-main">
+			<div class="ai__main-ttl">
+				<h3>AI기술을 활용한<br>인정식탁의 맞춤형 식탁</h3>
+				<span>나를 알아보고 싶다면 [나만의 식탁]<br>오늘 뭘 먹을지 고민된다면<br>[오늘의 식탁]을 선택해주세요!</span>
+			</div>
+			<div class="ai__main-btn">
+				<button type="button" onclick="window.location.href='./ai-chat.html?type=my'">나만의 식탁</button>
+				<button type="button" onclick="window.location.href='./ai-chat.html?type=today'">오늘의 식탁</button>
+			</div>
+		</div><!-- #page__ai-main -->
+
+	</div><!-- #wrap -->
+</body>
+</html>
