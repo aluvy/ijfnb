@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>인정식탁</title>
+
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/common.css" />
+	<link rel="stylesheet" href="./assets/css/ai.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="./assets/js/layout.js"></script>
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="page__ai-chat">
+			<div class="ai__chat-inner">
+				<div class="ai__chat-notice">
+					<p>AI 가 연결되었습니다.</p>
+				</div>
+
+			</div><!-- .ai__chat-inner -->
+		</div><!-- #page__ai-chat -->
+
+	</div><!-- #wrap -->
+	<script src="../chat.js"></script>
+	<script>
+
+		let param = new URLSearchParams(window.location.search);
+		let pageType = param.get('type');		// my, today
+		
+
+		$(()=>{
+
+			if( pageType == "my" ){		printChat(500, step_gender);	// 나만의 식탁
+			} else {					printChat(500, step_food);		// 오늘의 식탁
+			}
+
+			$(document).on("click", ".chat__item-btn button", function(){
+
+				// reset 버튼일 때 return
+				if( $(this).hasClass("btn__reset") ){ return }
+
+				$(document).find(".btn__reset").removeClass("active");
+
+				let active = $(this).parents(".speaker-customer").find(".active").length;	// active length
+				let chkNum = $(this).parents(".speaker-customer").data("select");			// check length
+
+				// console.log(active, chkNum)
+				
+				if( $(this).hasClass("active") ){
+					$(this).removeClass("active");
+				} else {
+					if( active < chkNum ){
+						$(this).addClass("active");
+					}
+				}
+
+				let active2 = $(this).parents(".speaker-customer").find(".active").length;	// active length
+
+				// next step
+				if( active2 >= chkNum ){
+					if( !$(this).parents(".speaker-customer").hasClass("select-multi") ){
+						$(this).parents(".speaker-customer").find("button").prop("disabled", true);
+					}
+					// $(document).find(".btn__result").prop("disabled", false);
+					eval($(this).parents(".speaker-customer").data("fuc"));	// 함수 실행
+				}
+
+				// 입력완료 버튼
+				if( active2 >= 1 ){
+					$(document).find(".btn__result").prop("disabled", false);
+				} else {
+					$(document).find(".btn__result").prop("disabled", true);
+				}
+			})
+
+			// 질환없음 클릭
+			$(document).on("click", ".btn__reset", function(){
+
+				if( $(this).hasClass("active") ){
+					console.log('true')
+					$(this).removeClass("active");
+					$(document).find(".btn__result").prop("disabled", true);
+				} else {
+					// console.log('else');
+					$(this).parents(".speaker-customer").find("button").removeClass("active");
+					$(this).parents(".speaker-customer").find("button").prop("disabled", false);
+					$(this).addClass("active");
+					$(document).find(".btn__result").prop("disabled", false);
+				}
+			})
+
+			// 다시하기 클릭
+			$(document).on("click", ".btn__clear", function(){
+				let status = confirm("처음부터 다시 시작하시겠습니까?")
+				if( !status ){ return }
+				window.location.href = './ai.html';
+			})
+
+			
+		});
+
+
+		const printChat = function(time, data, option){
+			$(document).find(".ai__chat-inner").append(chating);
+			
+			scrollTop()
+
+			// option1: 여성질문, option2: 남성질문
+			if (option == 2){ data.ask = data.ask2 }
+
+			// ask HTML
+			let askHTML = `<div class="chat__group speaker-injung">`;
+			data.ask.forEach((item, index)=>{ askHTML += `<div class="chat__item"><div class="chat__item-bubble">${item}</div></div>` })
+			askHTML += `</div>`;
+
+			// asnwer HTML
+			let answerHTML = `
+				<div class="chat__group speaker-customer ${data.class}" data-select="${data.selection}" data-fuc="${data.function}" data-category="${data.category}">
+					<div class="chat__item">
+						<div class="chat__item-btn">
+			`;
+			data.answer.forEach((item, index)=>{
+				let func = item.function ?? "";
+				answerHTML += `<button type="button" class="${item.class}" value="${item.value}" data="${item.data}" onclick=${func}>${item.title}</button>`;
+			})
+			answerHTML += `</div></div></div>`;
+
+			// end button HTML
+			if( data.next == "end" ){
+				answerHTML += `
+					<div class="ai__chat-finish">
+						<button type="reset" class="btn__clear">다시하기</button>
+						<button type="button" onclick="result()" class="btn__result" disabled>입력완료</button>
+					</div>
+				`;
+			}
+
+			setTimeout(() => {
+				$(document).find(".chat__ing").remove();
+				$(document).find(".ai__chat-inner").append(askHTML);
+				$(document).find(".ai__chat-inner").append(answerHTML);
+				scrollTop()
+			}, time);
+		}
+
+
+		// calorie
+		const getCalorie = function(){
+			let gender = $(document).find(".step_gender .active").val();	// '여성', '남성'
+			let age = Number($(document).find(".step_age .active").val().replace(/[^0-9]/gi, ""));			// '30대'
+			let tall = Number($(document).find(".step_tall .active").val().split("~")[0].split("cm")[0]);		// '150~160cm'
+			let weight = Number($(document).find(".step_weight .active").val().split("~")[0].split("kg")[0]);	// '80~90kg'
+
+			let calorie = 0;
+			if(gender == "남자"){		calorie = 66.47 + (1.75 * weight) + (5 * tall) - (6.76 * age)
+			} else {				   calorie = 655.1 + (9.56 * weight) + (1.85 * tall) - (4.68 * age)
+			}
+			return calorie.toFixed(0);
+		}
+
+
+		// 칼로리 알려주고 다음 질문 go
+		const weightResult = function(){
+			$(document).find(".ai__chat-inner").append(chating);
+			scrollTop()
+
+			let calorie = getCalorie();
+			let text = `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">건강 관리가 필요해보여요!!</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble chat__item-calorie">고객님에게 가장 적합한 하루 열량은 <span class="tred">${calorie}</span>칼로리 입니다!</div>
+					</div>
+				</div>
+			`;
+
+			setTimeout(() => {
+				$(document).find(".chat__ing").remove();
+				$(document).find(".ai__chat-inner").append(text);
+				scrollTop()
+			}, 1000);
+
+			setTimeout(() => { printChat(1000, step_food) }, 1500);
+		}
+		
+
+		const result = function(){
+			console.log('result');
+
+			let activeBtn = Array.from($(document).find(".ai__chat-inner button.active"));
+			let result_data = {};
+			activeBtn.forEach((item, index)=>{
+				let category = $(item).parents(".speaker-customer").data("category");
+				if( result_data[category] ){
+					result_data[category] = `${result_data[category]},${$(item).val()}`;
+				} else {
+					result_data[category] = $(item).val();
+				}
+				// result_data[category] = $(item).val();
+				// result_data.push( { `${category}` : $(item).val() } );
+			})
+
+			// console.log('result_data', result_data);
+			localStorage.setItem("result_data", JSON.stringify(result_data));
+			
+			window.location.href = "ai-result.html";
+		}
+
+
+		const scrollTop = function(){
+			$(".ai__chat-inner").scrollTop(5000000000);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>인정식탁</title>
+
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/common.css" />
+	<link rel="stylesheet" href="./assets/css/ai.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="./assets/js/layout.js"></script>
+
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
+</head>
+<body>
+	<div id="wrap">
+
+		<div id="page__ai-recom">
+			<div class="ai__recom-ttl">
+				<!-- <h3>평소 간 건강에 염려가 많은 당신을 위한<br>건강한 식재료로 가득 채운 한 상</h3>
+				<span>단백질, 비타민B, 무기질이 풍부한 녹색 채소와 라이코펜 성분이 풍부한 토마토는<br>당신의 간 세포 재생을 책임질 만능 해결사!!</span> -->
+				<h3>소중한 당신에게<br>가장 잘 어울리는 식단을 인정 AI가 추천해요!</h3>
+				<p class="result__wrap"></p>
+			</div>
+			<div class="ai__recom-prd">
+				<div class="recom__product">
+					<h3 class="recom__product-ttl">맞춤식탁이 추천해요</h3>
+					<div class="swiper myProducts">
+						<ul class="recom__prd__group swiper-wrapper"></ul>
+					</div>
+					<!-- <div class="recom__product-btn">
+						<a href="https://m.ijfnb.com/" class="btn__buy">구매하러 가기</a>
+					</div> -->
+				</div>
+			</div><!-- .ai__recom-prd -->
+		</div><!-- #page__ai-recom -->
+
+	</div><!-- #wrap -->
+	<script src="../prd.js"></script>
+	<script>
+		$(()=>{
+			
+			
+			let result_data = JSON.parse(localStorage.getItem("result_data"));
+			// console.log(result_data);
+			let resultHTML = ``;
+			if( result_data.gender ){ resultHTML += `<span>${result_data.gender}</span>` }
+			if( result_data.age ){ resultHTML += `<span>${result_data.age}</span>` }
+			if( result_data.favorit ){ resultHTML += `<span>${result_data.favorit}</span>` }
+			if( result_data.food ){ resultHTML += `<span>${result_data.food}</span>` }
+			if( result_data.health ){ resultHTML += `<span>${result_data.health}</span>` }
+			
+			$(document).find(".result__wrap").html(resultHTML);
+
+
+			// health
+			result_data.health = result_data.health.split(",");
+
+			// recomPrd
+			let useData = [];
+			recomPrd.forEach((item, index)=>{
+				item.value.forEach((item2, index2)=>{
+					if( item2 == result_data.food || item2 == result_data.favorit ){
+						useData.push(item);
+					}
+					// health
+					result_data.health.forEach((item3, index3)=>{
+						if( item2 == item3 ){ useData.push(item) }
+					})
+				})
+			})
+			// console.log(useData);
+
+
+			let recomHTML = ``;
+			useData.forEach((item, index)=>{
+				recomHTML += `
+					<li class="recom__prd__item swiper-slide">
+						<a href="${item.link}" target="blank">
+							<dl class="recom__prd__item-info">
+								<dt>${item.product}</dt>
+								<dd>${item.category}</dd>
+							</dl>
+							<div class="recom__prd__item-photo"><img src="../prd/${item.image}.jpg" alt="prd image" /></div>
+						</a>
+					</li>
+				`;
+			});
+			$(document).find(".recom__prd__group").html(recomHTML);
+
+
+			// var swiper3 = new Swiper(".myProducts", {
+			// 	effect: "coverflow",
+			// 	grabCursor: true,
+			// 	centeredSlides: true,
+			// 	slidesPerView: "auto",
+			// 	coverflowEffect: {
+			// 		rotate: 50,
+			// 		stretch: 0,
+			// 		depth: 100,
+			// 		modifier: 1,
+			// 		slideShadows: true,
+			// 	},
+			// 	pagination: {
+			// 		el: ".swiper-pagination",
+			// 	},
+			// 	on: {
+			// 		slideChange: function () {
+			// 			// console.log(this.realIndex+'번째 slide입니다.');
+			// 			// let link = $(document).find(".swiper-slide-active a").prop("href");
+			// 			let link = useData[this.realIndex].url;
+			// 			$(document).find(".btn__buy").prop("href", link);
+			// 		}
+			// 	}
+			// });
+			// swiper3.slideTo(1,0);
+		});
+	</script>
+</body>
+</html>
