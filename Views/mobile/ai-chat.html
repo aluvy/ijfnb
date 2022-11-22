@@ -189,6 +189,66 @@
 
 			setTimeout(() => { printChat(1000, step_food) }, 1500);
 		}
+
+
+
+
+
+
+		// 비만도
+		const getObesity = function(){
+			// 성별, 신장, 체중, 나이
+			// BMI를 이용한 비만도 계산  ex) 키 170㎝에 몸무게 73kg이면, 계산식 : 73 / (1.7×1.7) = 25.26 → 과체중
+			// BMI가 18.5 이하면 저체중 ／ 18.5 ~ 22.9 사이면 정상 ／ 23.0 ~ 24.9 사이면 과체중 ／ 25.0 이상부터는 비만으로 판정.
+
+			// 몸무게 / (키*키)
+			let tall = Number($(document).find(".step_tall .active").val().split("~")[0].split("cm")[0]) * 0.01;		// '150~160cm'
+			let weight = Number($(document).find(".step_weight .active").val().split("~")[0].split("kg")[0]);	// '80~90kg'
+			
+			let obesity = Number((weight / ( tall * tall )).toFixed(1));
+			let obesityText = "";
+			if( obesity <= 18.5 ){
+				obesityText = "저체중";
+			} else if ( obesity <= 22.9 ){
+				obesityText = "정상";
+			} else if ( obesity <= 24.9 ){
+				obesityText = "과체중";
+			} else {
+				obesityText = "비만";
+			}
+
+			return [obesity, obesityText];
+		}
+
+
+		// 비만도 알려주고 다음 질문 go
+		const obesityResult = function(){
+			$(document).find(".ai__chat-inner").append(chating);
+			scrollTop()
+
+			let obesity = getObesity();
+			let text = `
+				<div class="chat__group speaker-injung">
+					<div class="chat__item">
+						<div class="chat__item-bubble">건강 관리가 필요해보여요!!</div>
+					</div>
+					<div class="chat__item">
+						<div class="chat__item-bubble chat__item-calorie">고객님 BMI는 <span class="tred">${obesity[0]}</span>로 <span class="tred">${obesity[1]}</span> 입니다!</div>
+					</div>
+				</div>
+			`;
+
+			setTimeout(() => {
+				$(document).find(".chat__ing").remove();
+				$(document).find(".ai__chat-inner").append(text);
+				scrollTop()
+			}, 1000);
+
+			setTimeout(() => { printChat(1000, step_food) }, 1500);
+		}
+
+
+
 		
 
 		const result = function(){
