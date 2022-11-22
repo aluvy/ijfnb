@@ -40,7 +40,7 @@ const recomPrd = [
 		category: '제스프리 키위',
 		link: 'https://www.coupang.com/vp/products/1721241140?itemId=2929608039&vendorItemId=70918246939&pickType=COU_PICK&q=키위&itemsCount=36&searchId=0080b692643842968242f0e00b1abb7d&rank=1&isAddedCart=',
 		option: '',
-		value : ['체중감량'],
+		value : ['소아비만'],
 		image: '4',
 	},
 	{
@@ -51,7 +51,7 @@ const recomPrd = [
 		category: '오뚜기 옛날 미역',
 		link: 'https://www.coupang.com/vp/products/401878?itemId=1052686&vendorItemId=3000996741&q=미역&itemsCount=36&searchId=d2e1f045e23d4f9683db85dce79ed359&rank=1&isAddedCart=',
 		option: '',
-		value : ['체중감량'],
+		value : ['소아비만'],
 		image: '5',
 	},
 	{
@@ -62,7 +62,7 @@ const recomPrd = [
 		category: '국내산 브로콜리',
 		link: 'https://www.coupang.com/vp/products/4874444452?itemId=6339533080&vendorItemId=73634892616&q=브로콜리&itemsCount=36&searchId=b38886057aa349c683d8a5fbf820f311&rank=1&isAddedCart=',
 		option: '',
-		value : ['체중감량'],
+		value : ['소아비만'],
 		image: '6',
 	},
 	{
@@ -73,7 +73,7 @@ const recomPrd = [
 		category: '바다맘 다시마',
 		link: 'https://www.coupang.com/vp/products/16163092?itemId=65959906&vendorItemId=3105188834&q=다시마&itemsCount=36&searchId=396d19f245664ace86b86f77642b0b32&rank=2&isAddedCart=',
 		option: '',
-		value : ['건강식'],
+		value : ['성인비만'],
 		image: '7',
 	},
 	{
@@ -84,7 +84,7 @@ const recomPrd = [
 		category: '곰곰 친환경 양배추',
 		link: 'https://www.coupang.com/vp/products/1496018001?itemId=2569107215&vendorItemId=70561480254&pickType=COU_PICK&q=양배추&itemsCount=36&searchId=36ddd8fdcc9c4025b95f94202de69a0e&rank=2&isAddedCart=',
 		option: '',
-		value : ['건강식'],
+		value : ['성인비만'],
 		image: '8',
 	},
 	{
@@ -95,7 +95,7 @@ const recomPrd = [
 		category: 'DG Farm 혼합 17곡',
 		link: 'https://www.coupang.com/vp/products/1848953441?itemId=3142918414&vendorItemId=71130533223&pickType=COU_PICK&q=잡곡&itemsCount=36&searchId=244cdc65cf8b4ae6895388288be2d98c&rank=1&isAddedCart=',
 		option: '',
-		value : ['건강식'],
+		value : ['성인비만'],
 		image: '9',
 	},
 	{
@@ -326,7 +326,7 @@ const recomPrd = [
 		category: '하림 닭고기',
 		link: 'https://www.coupang.com/vp/products/1628662667?itemId=11049206816&vendorItemId=78328735918&pickType=COU_PICK&q=닭&itemsCount=36&searchId=6d7f660a546646a69988009b2007c8a5&rank=1&isAddedCart=',
 		option: '',
-		value : ['체력보강'],
+		value : ['수험생'],
 		image: '30',
 	},
 	{
@@ -337,7 +337,7 @@ const recomPrd = [
 		category: '곰곰 호두',
 		link: 'https://www.coupang.com/vp/products/261164888?itemId=816622511&vendorItemId=5479617295&pickType=COU_PICK&q=호두&itemsCount=36&searchId=7ab24722a94947669b90974e60c47fea&rank=1&isAddedCart=',
 		option: '',
-		value : ['체력보강'],
+		value : ['수험생'],
 		image: '31',
 	},
 	{
@@ -348,7 +348,7 @@ const recomPrd = [
 		category: '넛츠팜 호박씨',
 		link: 'https://www.coupang.com/vp/products/2392109?itemId=100289&vendorItemId=3000047779&pickType=COU_PICK&q=호박씨&itemsCount=36&searchId=60132b7635874cf1b9d494531d89e49f&rank=1&isAddedCart=',
 		option: '',
-		value : ['체력보강'],
+		value : ['수험생'],
 		image: '32',
 	},
 	{
