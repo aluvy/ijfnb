@@ -34,39 +34,21 @@
 	<script>
 		$(()=>{
 
-			//
-			let my_data = JSON.parse(localStorage.getItem("my_data"));
-			let today_data = JSON.parse(localStorage.getItem("today_data"));
-			localStorage.removeItem("my_data");
-			localStorage.removeItem("today_data");
+			let result_data = JSON.parse(localStorage.getItem("result_data"));
+			// localStorage.removeItem("result_data");
+			
 			let resultHTML = ``;
 
-			// 나만의 식탁
-			if( my_data !== null ){
-				resultHTML = `
-					<span>${my_data[1]}</span>
-					<span>${my_data[0]}</span>
-					<span>${my_data[4]}</span>
-					<span>${my_data[5]}</span>
-				`;
-				if( my_data[6] ){ resultHTML += `<span>${my_data[6]}</span>` }
-				if( my_data[7] ){ resultHTML += `<span>${my_data[7]}</span>` }
-				if( my_data[8] ){ resultHTML += `<span>${my_data[8]}</span>` }
-
-			} else if( today_data !== null ){	// 오늘의 식탁
-				resultHTML = `
-					<span>${today_data[0]}</span>
-					<span>${today_data[1]}</span>
-				`;
-				if( today_data[2] ){ resultHTML += `<span>${today_data[2]}</span>` }
-				if( today_data[3] ){ resultHTML += `<span>${today_data[3]}</span>` }
-				if( today_data[4] ){ resultHTML += `<span>${today_data[4]}</span>` }
-			}
+			if( result_data.gender ){ resultHTML += `<span>${result_data.gender}</span>` }
+			if( result_data.age ){ resultHTML += `<span>${result_data.age}</span>` }
+			if( result_data.favorit ){ resultHTML += `<span>${result_data.favorit}</span>` }
+			if( result_data.food ){ resultHTML += `<span>${result_data.food}</span>` }
+			if( result_data.health ){ resultHTML += `<span>${result_data.health}</span>` }
 
 			$(document).find(".result__wrap").html(resultHTML);
 
 			setTimeout(() => {
-				// window.location.href = "./ai-recom.html";
+				window.location.href = "./ai-recom.html";
 			}, 3000);
 		});
 	</script>
